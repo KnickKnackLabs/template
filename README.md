@@ -25,7 +25,7 @@ It intentionally does **not** decide what your product does. Copy it, rename the
 ## Quick start
 
 ```bash
-gh repo create KnickKnackLabs/my-tool --template KnickKnackLabs/template --public
+gh repo create KnickKnackLabs/my-tool --template KnickKnackLabs/template --public --clone
 cd my-tool
 
 mise trust

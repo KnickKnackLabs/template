@@ -176,7 +176,7 @@ const readme = (
     </Section>
 
     <Section title="Quick start">
-      <CodeBlock lang="bash">{`gh repo create KnickKnackLabs/my-tool --template KnickKnackLabs/template --public
+      <CodeBlock lang="bash">{`gh repo create KnickKnackLabs/my-tool --template KnickKnackLabs/template --public --clone
 cd my-tool
 
 mise trust

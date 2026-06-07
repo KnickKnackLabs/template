@@ -20,13 +20,19 @@ Copy the boring parts so the interesting parts start sooner.
 
 `template` is the default empty room for a new KnickKnackLabs tool: mise-managed tasks, BATS tests, codebase convention lints, generated README, CI, and a `doctor` task that tells you whether your clone has the optional local pre-commit hook installed.
 
+This is deliberately a normal repo, not a GitHub template repo. Copy the files, start fresh history for the new tool, and keep this repo as the living reference skeleton.
+
 It intentionally does **not** decide what your product does. Copy it, rename the obvious constants, then add the first real command only when the workflow is clear.
 
 ## Quick start
 
 ```bash
-gh repo create KnickKnackLabs/my-tool --template KnickKnackLabs/template --public
+gh repo clone KnickKnackLabs/template my-tool
 cd my-tool
+
+# Start the new tool with its own history instead of inheriting template commits.
+rm -rf .git
+git init -b main
 
 mise trust
 mise install
@@ -35,6 +41,11 @@ mise run doctor
 
 # Optional local safety net: installs .git/hooks/pre-commit.d/codebase
 codebase pre-commit
+
+# When the skeleton is shaped for the new tool, create and push its repo.
+git add .
+git commit -m "chore: start from KKL tool skeleton"
+gh repo create KnickKnackLabs/my-tool --public --source=. --remote=origin --push
 ```
 
 ## Goodies baked in

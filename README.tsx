@@ -169,6 +169,10 @@ const readme = (
       </Paragraph>
 
       <Paragraph>
+        {"This is deliberately a normal repo, not a GitHub template repo. Copy the files, start fresh history for the new tool, and keep this repo as the living reference skeleton."}
+      </Paragraph>
+
+      <Paragraph>
         {"It intentionally does "}
         <Bold>not</Bold>
         {" decide what your product does. Copy it, rename the obvious constants, then add the first real command only when the workflow is clear."}
@@ -176,8 +180,12 @@ const readme = (
     </Section>
 
     <Section title="Quick start">
-      <CodeBlock lang="bash">{`gh repo create KnickKnackLabs/my-tool --template KnickKnackLabs/template --public
+      <CodeBlock lang="bash">{`gh repo clone KnickKnackLabs/template my-tool
 cd my-tool
+
+# Start the new tool with its own history instead of inheriting template commits.
+rm -rf .git
+git init -b main
 
 mise trust
 mise install
@@ -185,7 +193,12 @@ mise run test
 mise run doctor
 
 # Optional local safety net: installs .git/hooks/pre-commit.d/codebase
-codebase pre-commit`}</CodeBlock>
+codebase pre-commit
+
+# When the skeleton is shaped for the new tool, create and push its repo.
+git add .
+git commit -m "chore: start from KKL tool skeleton"
+gh repo create KnickKnackLabs/my-tool --public --source=. --remote=origin --push`}</CodeBlock>
     </Section>
 
     <Section title="Goodies baked in">

@@ -30,6 +30,9 @@ jobs:
         with:
           install: true
 
+      - name: Check whitespace
+        run: git diff --check
+
       - name: Run tests
         run: mise run test
 
